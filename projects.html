@@ -62,6 +62,204 @@
             transform: scale(1.08);
             /* Stronger scale for interaction */
         }
+
+        /* ===============================
+   GLOBAL RESPONSIVE SAFETY
+=============================== */
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        img,
+        video,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Disable hover effects on touch devices */
+        @media (hover: none) {
+
+            .glass-panel:hover,
+            .glass-card:hover,
+            .contact-card:hover,
+            .gallery-item:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+        }
+
+        /* ===============================
+   MOBILE PHONES (≤ 640px)
+=============================== */
+        @media (max-width: 640px) {
+
+            main,
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.25 !important;
+            }
+
+            h2 {
+                font-size: 1.6rem !important;
+            }
+
+            h3 {
+                font-size: 1.3rem !important;
+            }
+
+            p {
+                font-size: 0.95rem !important;
+            }
+
+            header .flex {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+
+            header a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .glass-panel,
+            .glass-card,
+            .contact-card {
+                padding: 1.25rem !important;
+            }
+
+            .gallery-item {
+                height: 220px !important;
+            }
+
+            footer .grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+
+            footer .flex {
+                justify-content: center;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* ===============================
+   TABLETS & SMALL LAPTOPS
+=============================== */
+        @media (max-width: 1024px) {
+            .flex {
+                flex-wrap: wrap;
+            }
+
+            .gallery-item {
+                height: 260px;
+            }
+        }
+
+        /* ===============================
+   LARGE SCREENS
+=============================== */
+        @media (min-width: 1536px) {
+            body {
+                font-size: 1.05rem;
+            }
+
+            section {
+                padding-top: 7rem;
+                padding-bottom: 7rem;
+            }
+        }
+
+        /* ===============================
+   THREE.JS BACKGROUND SAFETY
+=============================== */
+        #webgl-container {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        #webgl-container canvas {
+            max-width: 100%;
+            height: auto !important;
+            pointer-events: none;
+        }
+
+        /* FINAL FIX: remove top-right Contact Us on mobile */
+        @media (max-width: 767px) {
+            nav a.md\:hidden {
+                display: none !important;
+            }
+        }
+
+        /* FORCE mobile hamburger to the right */
+        @media (max-width: 767px) {
+            #menuBtn {
+                margin-left: auto !important;
+            }
+        }
+
+        /* FINAL FIX — PREVENT NAV WRAPPING ON MOBILE */
+        @media (max-width: 767px) {
+            nav>div {
+                flex-wrap: nowrap !important;
+            }
+
+            #menuBtn {
+                margin-left: auto !important;
+            }
+        }
+
+        /* HOSTINGER FINAL FIX — FORCE NAV ROW */
+        @media (max-width: 767px) {
+
+            nav {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+
+            nav>* {
+                flex: 1 1 auto !important;
+            }
+
+            nav a:first-child {
+                flex: 0 0 auto !important;
+            }
+
+            #menuBtn {
+                flex: 0 0 auto !important;
+                margin-left: auto !important;
+            }
+        }
+
+        /* FINAL MOBILE NAV FIX — HOSTINGER SAFE */
+        @media (max-width: 767px) {
+
+            nav {
+                position: relative !important;
+            }
+
+            #menuBtn {
+                position: absolute !important;
+                right: 16px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                z-index: 60;
+            }
+        }
     </style>
 </head>
 
