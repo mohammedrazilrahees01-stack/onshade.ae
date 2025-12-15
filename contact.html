@@ -51,7 +51,7 @@
             border-color: #3B82F6;
             transform: scale(1.02);
         }
-        
+
         /* ===============================
    GLOBAL RESPONSIVE SAFETY
 =============================== */
@@ -250,26 +250,102 @@
             }
         }
     </style>
+    <style>
+        body {
+            /* Hide the default cursor only if you want full immersion, 
+           otherwise, leave it 'auto' to ensure usability. 
+           'none' is risky if the JS fails. */
+            cursor: default;
+        }
+
+        /* The small center dot */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            /* Your brand_blue color */
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* The large trailing ring */
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            /* Semi-transparent blue */
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Animation when hovering over clickable items */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(59, 130, 246, 0.1);
+            /* Light blue fill */
+            border-color: transparent;
+        }
+
+        /* Hide cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="antialiased flex flex-col min-h-screen">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
     <div id="webgl-container"></div>
 
     <nav class="w-full z-50 py-4 border-b border-gray-800 bg-navy/80 backdrop-blur-md sticky top-0">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold tracking-widest text-white"><span
-                    class="text-brand_blue">ON</span>SHADE</a>
+
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center">
+                <img src="images/onshade.png" alt="OnShade Logo" class="h-9 md:h-10 w-auto object-contain">
+            </a>
+
+            <!-- DESKTOP MENU -->
             <div class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-300 hover:text-brand_blue transition">Home</a>
+                <a href="index.html" class="text-white font-bold border-b-2 border-brand_blue">Home</a>
                 <a href="services.html" class="text-gray-300 hover:text-brand_blue transition">Services</a>
                 <a href="about.html" class="text-gray-300 hover:text-brand_blue transition">About</a>
                 <a href="projects.html" class="text-gray-300 hover:text-brand_blue transition">Projects</a>
                 <a href="contact.html"
-                    class="bg-brand_blue px-5 py-2 rounded-full text-white hover:bg-blue-600 transition hover:scale-105 transform shadow-lg">Contact</a>
+                    class="bg-brand_blue px-5 py-2 rounded-full text-white hover:bg-blue-600 transition hover:scale-105 transform shadow-lg">
+                    Contact
+                </a>
             </div>
-            <a href="contact.html" class="md:hidden text-brand_blue font-bold">Menu</a>
+
+            <!-- MOBILE CONTACT -->
+            <a href="contact.html" class="md:hidden text-brand_blue font-bold">Contact Us</a>
         </div>
-    </nav>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="menuBtn" class="md:hidden absolute right-4 top-1/2 -translate-y-1/2 text-brand_blue">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </nav>>
 
     <main class="max-w-7xl mx-auto px-4 py-16 w-full">
         <div class="text-center mb-16" data-aos="fade-up">
@@ -307,13 +383,19 @@
 
             <div class="bg-navy_light/70 p-8 rounded-2xl border border-brand_blue/50" data-aos="fade-left">
                 <h2 class="text-3xl font-bold mb-6">Quick Quote Request</h2>
-                <form action="mailto:info@onshade.com" method="post" enctype="text/plain" class="space-y-4">
+
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+
+                    <input type="hidden" name="access_key" value="bce07753-952d-4474-8567-417e3d8cf35c">
+
+                    <input type="hidden" name="subject" value="New Quote Request from Website">
+
                     <label class="block text-sm text-gray-400">Full Name</label>
-                    <input type="text" name="name"
+                    <input type="text" name="name" required
                         class="w-full bg-navy border border-gray-600 rounded-lg p-3 text-white focus:ring-brand_blue focus:border-brand_blue text-sm">
 
                     <label class="block text-sm text-gray-400">Email Address</label>
-                    <input type="email" name="email"
+                    <input type="email" name="email" required
                         class="w-full bg-navy border border-gray-600 rounded-lg p-3 text-white focus:ring-brand_blue focus:border-brand_blue text-sm">
 
                     <label class="block text-sm text-gray-400">Service Required</label>
@@ -326,7 +408,7 @@
                     </select>
 
                     <label class="block text-sm text-gray-400">Details of Shipment/Project</label>
-                    <textarea rows="5" name="details"
+                    <textarea rows="5" name="details" required
                         class="w-full bg-navy border border-gray-600 rounded-lg p-3 text-white focus:ring-brand_blue focus:border-brand_blue text-sm"></textarea>
 
                     <button type="submit"
@@ -449,6 +531,39 @@
         function animate() { requestAnimationFrame(animate); particles.rotation.y += 0.001; renderer.render(scene, camera); }
         animate();
         window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+    </script>
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        // 1. Move the cursor
+        window.addEventListener('mousemove', function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot moves instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline uses animation for smoothness
+            // We use 'animate' for better performance than changing style directly
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // 2. Add Hover Effect for Buttons and Links
+        const clickableElements = document.querySelectorAll('a, button, input[type="submit"], select, textarea, input');
+
+        clickableElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
     </script>
 </body>
 
