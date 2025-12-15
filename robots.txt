@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onshade.ae/sitemap.xml
