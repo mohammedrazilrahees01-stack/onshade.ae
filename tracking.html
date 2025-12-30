@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Track Shipment | On Shade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+        content="On Shade Transportation provides reliable logistics, freight, and transportation services across Abu Dhabi and the UAE. Get efficient, secure transport solutions today." />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/heroicons@latest/dist/heroicons.min.js"></script>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://onshade.ae/" />
+
+    <!-- Robots Meta -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- X-Robots-Tag (mainly for headers, but safe as meta fallback) -->
+    <meta http-equiv="X-Robots-Tag" content="index, follow" />
+
+    <!-- Keywords -->
+    <meta name="keywords"
+        content="On Shade Transportation, logistics company UAE, transportation services Abu Dhabi, freight services UAE, cargo transport UAE, logistics solutions MENA, On Shade logistics" />
+
+    <!-- Publisher -->
+    <meta name="publisher" content="On Shade Transportation" />
+
+    <!-- Language -->
+    <meta http-equiv="Content-Language" content="en" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="On Shade Transportation | UAE Logistics Experts" />
+    <meta property="og:description"
+        content="Professional transportation and logistics services across Abu Dhabi and the UAE." />
+    <meta property="og:url" content="https://onshade.ae/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://onshade.ae/assets/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="On Shade Transportation" />
+    <meta name="twitter:description" content="Trusted logistics & transport services across UAE." />
+    <meta name="twitter:image" content="https://onshade.ae/assets/og-image.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LogisticsBusiness",
+  "name": "On Shade Transportation",
+  "url": "https://onshade.ae/",
+  "logo": "https://onshade.ae/assets/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+971521222497",
+    "contactType": "customer service",
+    "areaServed": "AE"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AE",
+    "addressRegion": "Abu Dhabi"
+  }
+}
+</script>
+
+
+
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { navy: '#0B1120', brand_blue: '#3B82F6', navy_light: '#151E32' },
+                    // Changed font to Poppins
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1120;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Your Existing 3D Background Styling */
+        #webgl-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Enhanced Card Hover Effect (Already Implemented Correctly) */
+        .glass-panel {
+            background: rgba(21, 30, 50, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            /* This transition handles the 'pop a little' movement and scaling */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-12px);
+            /* Slight movement along with it */
+            border-color: #3B82F6;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            /* Pop effect via shadow */
+        }
+
+        /* Custom class to ensure stat numbers are NOT bold */
+        .stat-number-style {
+            /* Override Tailwind's default font-extrabold for this section */
+            font-weight: 600 !important;
+            /* Semi-bold is standard, non-extrabold */
+        }
+
+        /* ===============================
+   GLOBAL RESPONSIVE SAFETY
+=============================== */
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        img,
+        video,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Disable hover effects on touch devices */
+        @media (hover: none) {
+
+            .glass-panel:hover,
+            .glass-card:hover,
+            .contact-card:hover,
+            .gallery-item:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+        }
+
+        /* ===============================
+   MOBILE PHONES (≤ 640px)
+=============================== */
+        @media (max-width: 640px) {
+
+            main,
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.25 !important;
+            }
+
+            h2 {
+                font-size: 1.6rem !important;
+            }
+
+            h3 {
+                font-size: 1.3rem !important;
+            }
+
+            p {
+                font-size: 0.95rem !important;
+            }
+
+            header .flex {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+
+            header a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .glass-panel,
+            .glass-card,
+            .contact-card {
+                padding: 1.25rem !important;
+            }
+
+            .gallery-item {
+                height: 220px !important;
+            }
+
+            footer .grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+
+            footer .flex {
+                justify-content: center;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* ===============================
+   TABLETS & SMALL LAPTOPS
+=============================== */
+        @media (max-width: 1024px) {
+            .flex {
+                flex-wrap: wrap;
+            }
+
+            .gallery-item {
+                height: 260px;
+            }
+        }
+
+        /* ===============================
+   LARGE SCREENS
+=============================== */
+        @media (min-width: 1536px) {
+            body {
+                font-size: 1.05rem;
+            }
+
+            section {
+                padding-top: 7rem;
+                padding-bottom: 7rem;
+            }
+        }
+
+        /* ===============================
+   THREE.JS BACKGROUND SAFETY
+=============================== */
+        #webgl-container {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        #webgl-container canvas {
+            max-width: 100%;
+            height: auto !important;
+            pointer-events: none;
+        }
+
+        /* FINAL FIX: remove top-right Contact Us on mobile */
+        @media (max-width: 767px) {
+            nav a.md\:hidden {
+                display: none !important;
+            }
+        }
+
+        /* FORCE mobile hamburger to the right */
+        @media (max-width: 767px) {
+            #menuBtn {
+                margin-left: auto !important;
+            }
+        }
+
+        /* FINAL FIX — PREVENT NAV WRAPPING ON MOBILE */
+        @media (max-width: 767px) {
+            nav>div {
+                flex-wrap: nowrap !important;
+            }
+
+            #menuBtn {
+                margin-left: auto !important;
+            }
+        }
+
+        /* HOSTINGER FINAL FIX — FORCE NAV ROW */
+        @media (max-width: 767px) {
+
+            nav {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+
+            nav>* {
+                flex: 1 1 auto !important;
+            }
+
+            nav a:first-child {
+                flex: 0 0 auto !important;
+            }
+
+            #menuBtn {
+                flex: 0 0 auto !important;
+                margin-left: auto !important;
+            }
+        }
+
+        /* FINAL MOBILE NAV FIX — HOSTINGER SAFE */
+        @media (max-width: 767px) {
+
+            nav {
+                position: relative !important;
+            }
+
+            #menuBtn {
+                position: absolute !important;
+                right: 16px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                z-index: 60;
+            }
+        }
+        body {
+            /* Hide the default cursor only if you want full immersion, 
+           otherwise, leave it 'auto' to ensure usability. 
+           'none' is risky if the JS fails. */
+            cursor: default;
+        }
+
+        /* The small center dot */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            /* Your brand_blue color */
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* The large trailing ring */
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            /* Semi-transparent blue */
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Animation when hovering over clickable items */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(59, 130, 246, 0.1);
+            /* Light blue fill */
+            border-color: transparent;
+        }
+
+        /* Hide cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+        }
+
+        /* HERO LOGISTICS BACKGROUND (ONLY HERO SECTION) */
+        .hero-bg {
+            background-image: url("images/headquarters.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(8px) brightness(0.6);
+            transform: scale(1.1);
+            transition: filter 1.4s ease, transform 3.5s ease-out;
+        }
+
+        .hero-bg.loaded {
+            filter: blur(0) brightness(0.75);
+            transform: scale(1);
+        }
+
+        /* HERO IMAGE BOTTOM FADE */
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(11, 17, 32, 0) 60%,
+                    rgba(11, 17, 32, 0.6) 80%,
+                    rgba(11, 17, 32, 1) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0B1120] text-white min-h-screen flex flex-col">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div id="webgl-container"></div>
+
+
+     <nav class="w-full z-50 py-4 border-b border-gray-800 bg-navy/80 backdrop-blur-md sticky top-0">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center">
+                <img src="images/onshade.png" alt="OnShade Logo" class="h-9 md:h-10 w-auto object-contain">
+            </a>
+
+            <!-- DESKTOP MENU -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-brand_blue transition">Home</a>
+                <a href="services.html" class="text-gray-300 hover:text-brand_blue transition">Services</a>
+                <a href="about.html" class="text-gray-300 hover:text-brand_blue transition">About</a>
+                <a href="projects.html" class="text-gray-300 hover:text-brand_blue transition">Projects</a>
+                <a href="clients.html" class="text-gray-300 hover:text-brand_blue transition">Clients</a>
+                <a href="tracking.html" class="text-white font-bold border-b-2 border-brand_blue">Tracking</a>
+
+                <a href="contact.html"
+                    class="bg-brand_blue px-5 py-2 rounded-full text-white hover:bg-blue-600 transition hover:scale-105 transform shadow-lg">
+                    Contact
+                </a>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="menuBtn" class="md:hidden absolute right-4 top-1/2 -translate-y-1/2 text-brand_blue">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </nav>
+
+    <main class="flex-grow max-w-3xl mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-center mb-6">Track Your Shipment</h1>
+
+        <div class="flex justify-center mb-8">
+            <input id="code" placeholder="Tracking Code" class="bg-gray-800 px-4 py-3 rounded-l w-64">
+            <button onclick="track()" class="bg-blue-500 px-6 rounded-r font-bold">Track</button>
+        </div>
+
+        <div id="box" class="hidden bg-gray-900 p-6 rounded-xl">
+            <p class="text-sm text-gray-400">Mode</p>
+            <p id="mode" class="font-bold mb-4"></p>
+
+            <ul id="status" class="list-disc ml-5 space-y-1"></ul>
+
+            <p class="text-xs text-gray-400 mt-4">Last updated: <span id="time"></span></p>
+        </div>
+
+        <p id="err" class="text-red-500 text-center hidden">Invalid tracking code</p>
+    </main>
+
+    <footer class="bg-[#151E32] py-8 text-center text-gray-400 text-sm">
+        © 2025 On Shade Transportation LLC
+    </footer>
+
+    <script>
+        function track() {
+            const c = document.getElementById('code').value.trim();
+            const data = TrackingStore.loadShipments();
+            const box = document.getElementById('box');
+            const err = document.getElementById('err');
+
+            box.classList.add('hidden');
+            err.classList.add('hidden');
+
+            if (!data[c]) { err.classList.remove('hidden'); return; }
+
+            document.getElementById('mode').innerText = data[c].mode;
+            document.getElementById('time').innerText = data[c].lastUpdated;
+
+            const ul = document.getElementById('status');
+            ul.innerHTML = '';
+            data[c].statuses.forEach(s => {
+                const li = document.createElement('li'); li.innerText = s; ul.appendChild(li);
+            });
+
+            box.classList.remove('hidden');
+        }
+    </script>
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        // 1. Move the cursor
+        window.addEventListener('mousemove', function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot moves instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline uses animation for smoothness
+            // We use 'animate' for better performance than changing style directly
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // 2. Add Hover Effect for Buttons and Links
+        const clickableElements = document.querySelectorAll('a, button, input[type="submit"], select, textarea, input');
+
+        clickableElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener("load", () => {
+            const hero = document.querySelector(".hero-bg");
+            if (hero) {
+                hero.classList.add("loaded");
+            }
+        });
+    </script>
+    <script src="tracking-data.js"></script>
+
+<script>
+function track() {
+  const code = document.getElementById("code").value.trim();
+  const data = TrackingStore.loadShipments();
+
+  const box = document.getElementById("box");
+  const err = document.getElementById("err");
+
+  box.classList.add("hidden");
+  err.classList.add("hidden");
+
+  if (!data[code]) {
+    err.classList.remove("hidden");
+    return;
+  }
+
+  document.getElementById("mode").innerText = data[code].mode;
+  document.getElementById("time").innerText = data[code].lastUpdated;
+
+  const ul = document.getElementById("status");
+  ul.innerHTML = "";
+  data[code].statuses.forEach(s => {
+    const li = document.createElement("li");
+    li.innerText = s;
+    ul.appendChild(li);
+  });
+
+  box.classList.remove("hidden");
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin – Shipment Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tracking-data.js"></script>
+
+    <script>
+        const ADMIN_PASSPHRASE = "ONSHADE-ADMIN-2025"; // 🔐 CHANGE HERE
+    </script>
+
+    <style>
+        body {
+            background: #0B1120;
+            color: white;
+        }
+
+        .card {
+            background: #151E32;
+            border: 1px solid #1f2937;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center">
+
+    <!-- LOGIN -->
+    <div id="loginBox" class="card p-8 rounded-xl w-96">
+        <h2 class="text-xl font-bold mb-4">Admin Access</h2>
+        <input id="pass" type="password" placeholder="Admin Passphrase" class="w-full p-3 bg-black rounded mb-4">
+        <button onclick="unlock()" class="w-full bg-blue-500 p-3 rounded font-bold">Unlock</button>
+    </div>
+
+    <!-- PANEL -->
+    <div id="panel" class="hidden max-w-3xl w-full p-8">
+        <h1 class="text-3xl font-bold mb-6">Shipment Management</h1>
+
+        <div class="card p-6 rounded mb-6">
+            <input id="name" placeholder="Customer / Company Name" class="bg-black p-3 rounded w-full mb-4">
+
+            <select id="mode" class="bg-black p-3 rounded w-full mb-4">
+                <option>Road</option>
+                <option>Air</option>
+                <option>Sea</option>
+            </select>
+
+            <button onclick="createShipment()" class="bg-blue-500 p-3 rounded w-full font-bold">
+                Generate Tracking Code
+            </button>
+
+            <p id="newCode" class="mt-4 text-green-400 font-bold"></p>
+        </div>
+
+        <div id="list"></div>
+    </div>
+
+    <script>
+        if (localStorage.getItem("admin_ok")) showPanel();
+
+        function unlock() {
+            if (document.getElementById("pass").value === ADMIN_PASSPHRASE) {
+                localStorage.setItem("admin_ok", "1");
+                showPanel();
+            } else alert("Wrong passphrase");
+        }
+
+        function showPanel() {
+            loginBox.classList.add("hidden");
+            panel.classList.remove("hidden");
+            render();
+        }
+
+        function createShipment() {
+            const code = TrackingStore.createShipment(
+                name.value.trim(),
+                mode.value
+            );
+            newCode.innerText = "Tracking Code: " + code;
+            render();
+        }
+
+        function render() {
+            const data = TrackingStore.loadShipments();
+            list.innerHTML = "";
+
+            Object.keys(data).forEach(code => {
+                const d = data[code];
+                const div = document.createElement("div");
+                div.className = "card p-4 rounded mb-4";
+                div.innerHTML = `
+      <b>${code}</b> (${d.mode})<br>
+      ${d.customer}<br>
+      <small>${d.lastUpdated}</small>
+      <button onclick="TrackingStore.deleteShipment('${code}'); render()"
+        class="text-red-400 mt-2">Delete</button>
+    `;
+                list.appendChild(div);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

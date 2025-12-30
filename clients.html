@@ -7,10 +7,66 @@
     <title>Our Clients | On Shade Transportation</title>
 
     <meta name="description"
-        content="Trusted by leading government, energy, logistics, and industrial companies across the UAE. Explore On Shade Transportation’s key clients and partnerships." />
+        content="On Shade Transportation provides reliable logistics, freight, and transportation services across Abu Dhabi and the UAE. Get efficient, secure transport solutions today." />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/heroicons@latest/dist/heroicons.min.js"></script>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://onshade.ae/" />
+
+    <!-- Robots Meta -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- X-Robots-Tag (mainly for headers, but safe as meta fallback) -->
+    <meta http-equiv="X-Robots-Tag" content="index, follow" />
+
+    <!-- Keywords -->
+    <meta name="keywords"
+        content="On Shade Transportation, logistics company UAE, transportation services Abu Dhabi, freight services UAE, cargo transport UAE, logistics solutions MENA, On Shade logistics" />
+
+    <!-- Publisher -->
+    <meta name="publisher" content="On Shade Transportation" />
+
+    <!-- Language -->
+    <meta http-equiv="Content-Language" content="en" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="On Shade Transportation | UAE Logistics Experts" />
+    <meta property="og:description"
+        content="Professional transportation and logistics services across Abu Dhabi and the UAE." />
+    <meta property="og:url" content="https://onshade.ae/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://onshade.ae/assets/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="On Shade Transportation" />
+    <meta name="twitter:description" content="Trusted logistics & transport services across UAE." />
+    <meta name="twitter:image" content="https://onshade.ae/assets/og-image.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LogisticsBusiness",
+  "name": "On Shade Transportation",
+  "url": "https://onshade.ae/",
+  "logo": "https://onshade.ae/assets/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+971521222497",
+    "contactType": "customer service",
+    "areaServed": "AE"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AE",
+    "addressRegion": "Abu Dhabi"
+  }
+}
+</script>
+
+
+
 
     <script>
         tailwind.config = {
@@ -39,10 +95,299 @@
         body {
             overflow-x: hidden;
         }
+
+        /* ===============================
+   GLOBAL RESPONSIVE SAFETY
+=============================== */
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        img,
+        video,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Disable hover effects on touch devices */
+        @media (hover: none) {
+
+            .glass-panel:hover,
+            .glass-card:hover,
+            .contact-card:hover,
+            .gallery-item:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+        }
+
+        /* ===============================
+   MOBILE PHONES (≤ 640px)
+=============================== */
+        @media (max-width: 640px) {
+
+            main,
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.25 !important;
+            }
+
+            h2 {
+                font-size: 1.6rem !important;
+            }
+
+            h3 {
+                font-size: 1.3rem !important;
+            }
+
+            p {
+                font-size: 0.95rem !important;
+            }
+
+            header .flex {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+
+            header a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .glass-panel,
+            .glass-card,
+            .contact-card {
+                padding: 1.25rem !important;
+            }
+
+            .gallery-item {
+                height: 220px !important;
+            }
+
+            footer .grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+
+            footer .flex {
+                justify-content: center;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* ===============================
+   TABLETS & SMALL LAPTOPS
+=============================== */
+        @media (max-width: 1024px) {
+            .flex {
+                flex-wrap: wrap;
+            }
+
+            .gallery-item {
+                height: 260px;
+            }
+        }
+
+        /* ===============================
+   LARGE SCREENS
+=============================== */
+        @media (min-width: 1536px) {
+            body {
+                font-size: 1.05rem;
+            }
+
+            section {
+                padding-top: 7rem;
+                padding-bottom: 7rem;
+            }
+        }
+
+        /* ===============================
+   THREE.JS BACKGROUND SAFETY
+=============================== */
+        #webgl-container {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        #webgl-container canvas {
+            max-width: 100%;
+            height: auto !important;
+            pointer-events: none;
+        }
+
+        /* FINAL FIX: remove top-right Contact Us on mobile */
+        @media (max-width: 767px) {
+            nav a.md\:hidden {
+                display: none !important;
+            }
+        }
+
+        /* FORCE mobile hamburger to the right */
+        @media (max-width: 767px) {
+            #menuBtn {
+                margin-left: auto !important;
+            }
+        }
+
+        /* FINAL FIX — PREVENT NAV WRAPPING ON MOBILE */
+        @media (max-width: 767px) {
+            nav>div {
+                flex-wrap: nowrap !important;
+            }
+
+            #menuBtn {
+                margin-left: auto !important;
+            }
+        }
+
+        /* HOSTINGER FINAL FIX — FORCE NAV ROW */
+        @media (max-width: 767px) {
+
+            nav {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+
+            nav>* {
+                flex: 1 1 auto !important;
+            }
+
+            nav a:first-child {
+                flex: 0 0 auto !important;
+            }
+
+            #menuBtn {
+                flex: 0 0 auto !important;
+                margin-left: auto !important;
+            }
+        }
+
+        /* FINAL MOBILE NAV FIX — HOSTINGER SAFE */
+        @media (max-width: 767px) {
+
+            nav {
+                position: relative !important;
+            }
+
+            #menuBtn {
+                position: absolute !important;
+                right: 16px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                z-index: 60;
+            }
+        }
+
+        body {
+            /* Hide the default cursor only if you want full immersion, 
+           otherwise, leave it 'auto' to ensure usability. 
+           'none' is risky if the JS fails. */
+            cursor: default;
+        }
+
+        /* The small center dot */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            /* Your brand_blue color */
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* The large trailing ring */
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            /* Semi-transparent blue */
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Animation when hovering over clickable items */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(59, 130, 246, 0.1);
+            /* Light blue fill */
+            border-color: transparent;
+        }
+
+        /* Hide cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+        }
+
+        /* HERO LOGISTICS BACKGROUND (ONLY HERO SECTION) */
+        .hero-bg {
+            background-image: url("images/headquarters.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(8px) brightness(0.6);
+            transform: scale(1.1);
+            transition: filter 1.4s ease, transform 3.5s ease-out;
+        }
+
+        .hero-bg.loaded {
+            filter: blur(0) brightness(0.75);
+            transform: scale(1);
+        }
+
+        /* HERO IMAGE BOTTOM FADE */
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(11, 17, 32, 0) 60%,
+                    rgba(11, 17, 32, 0.6) 80%,
+                    rgba(11, 17, 32, 1) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        
     </style>
 </head>
 
 <body class="antialiased flex flex-col min-h-screen">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div id="webgl-container"></div>
+
 
     <!-- NAVBAR -->
     <nav class="w-full z-50 py-4 border-b border-gray-800 bg-navy/80 backdrop-blur-md sticky top-0">
@@ -50,7 +395,7 @@
 
             <!-- LOGO -->
             <a href="index.html" class="flex items-center">
-                <img src="images/onshade.png" alt="On Shade Logo" class="h-9 md:h-10 w-auto object-contain">
+                <img src="images/onshade.png" alt="OnShade Logo" class="h-9 md:h-10 w-auto object-contain">
             </a>
 
             <!-- DESKTOP MENU -->
@@ -59,17 +404,23 @@
                 <a href="services.html" class="text-gray-300 hover:text-brand_blue transition">Services</a>
                 <a href="about.html" class="text-gray-300 hover:text-brand_blue transition">About</a>
                 <a href="projects.html" class="text-gray-300 hover:text-brand_blue transition">Projects</a>
-                <a href="clients.html"
-                    class="text-white font-bold border-b-2 border-brand_blue">Clients</a>
+                <a href="clients.html" class="text-white font-bold border-b-2 border-brand_blue">Clients</a>
+                <a href="tracking.html" class="text-gray-300 hover:text-brand_blue transition">Tracking</a>
+
                 <a href="contact.html"
-                    class="bg-brand_blue px-5 py-2 rounded-full text-white hover:bg-blue-600 transition">
+                    class="bg-brand_blue px-5 py-2 rounded-full text-white hover:bg-blue-600 transition hover:scale-105 transform shadow-lg">
                     Contact
                 </a>
             </div>
-
-            <!-- MOBILE CONTACT -->
-            <a href="contact.html" class="md:hidden text-brand_blue font-bold">Contact Us</a>
         </div>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="menuBtn" class="md:hidden absolute right-4 top-1/2 -translate-y-1/2 text-brand_blue">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
     </nav>
 
     <!-- MAIN -->
@@ -91,8 +442,7 @@
             <!-- Repeat safely -->
 
             <a href="https://www.google.com/search?q=ADNOC+UAE" target="_blank" rel="noopener noreferrer" class="block">
-                <div
-                    class="group bg-navy_light border border-gray-700 rounded-xl p-6 text-center
+                <div class="group bg-navy_light border border-gray-700 rounded-xl p-6 text-center
                            transition-transform duration-300 ease-out hover:scale-105 hover:border-brand_blue">
                     <img src="images/clients/adnoc.png" alt="ADNOC"
                         class="mx-auto h-16 object-contain transition-transform duration-300 group-hover:scale-110">
@@ -185,86 +535,127 @@
     </main>
 
     <footer class="bg-navy_light border-t border-gray-800 py-16 mt-auto">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-sm">
 
-            <!-- BRAND -->
-            <div class="space-y-4">
-                <h4 class="text-2xl font-extrabold tracking-widest text-white mb-4">
-                    <span class="text-brand_blue">ON</span>SHADE
-                </h4>
-                <p class="text-gray-400 leading-relaxed">
-                    Driving the future of logistics in the UAE and GCC. We deliver safe, efficient, and on-time
-                    transportation solutions for heavy equipment, cargo, and personnel.
-                </p>
+                <!-- BRAND -->
+                <div class="space-y-4">
+                    <h4 class="text-2xl font-extrabold tracking-widest text-white mb-4">
+                        <span class="text-brand_blue">ON</span>SHADE
+                    </h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Driving the future of logistics in the UAE and GCC. We deliver safe, efficient, and on-time
+                        transportation solutions for heavy equipment, cargo, and personnel.
+                    </p>
+                </div>
+
+                <!-- COMPANY -->
+                <div>
+                    <h5 class="text-lg font-bold text-white mb-4">Company</h5>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-brand_blue transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-brand_blue transition">About Us</a>
+                        </li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">Services</a>
+                        </li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-brand_blue transition">Projects</a>
+                        </li>
+                        <li><a href="clients.html" class="text-gray-400 hover:text-brand_blue transition">Clients</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CORE SERVICES -->
+                <div>
+                    <h5 class="text-lg font-bold text-white mb-4">Core Services</h5>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">
+                                Light, Heavy & Specialized Transport
+                            </a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">
+                                Shipping & Air Cargo
+                            </a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">
+                                Warehouse Services
+                            </a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-brand_blue transition">
+                                Get a Quote
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- CONTACT -->
+                <div>
+                    <h5 class="text-lg font-bold text-white mb-4">Get In Touch</h5>
+
+                    <p class="text-gray-300 font-semibold mb-2">UAE Headquarters</p>
+                    <p class="text-gray-400 mb-4">Dubai, United Arab Emirates</p>
+
+                    <p class="text-gray-300 font-semibold mb-1">Email:</p>
+                    <a href="mailto:info@onshade.com" class="text-brand_blue hover:text-white transition block">
+                        info@onshade.com
+                    </a>
+                    <a href="mailto:sales@onshade.com" class="text-brand_blue hover:text-white transition block">
+                        sales@onshade.com
+                    </a>
+
+                    <p class="text-gray-300 font-semibold mt-4 mb-1">Phone:</p>
+                    <a href="tel:+971521222497" class="text-brand_blue hover:text-white transition block">
+                        +971 52 122 2497
+                    </a>
+                    <a href="tel:+971521222496" class="text-brand_blue hover:text-white transition block">
+                        +971 52 122 2496
+                    </a>
+                </div>
             </div>
 
-            <!-- COMPANY -->
-            <div>
-                <h5 class="text-lg font-bold text-white mb-4">Company</h5>
-                <ul class="space-y-3">
-                    <li><a href="index.html" class="text-gray-400 hover:text-brand_blue transition">Home</a></li>
-                    <li><a href="about.html" class="text-gray-400 hover:text-brand_blue transition">About Us</a></li>
-                    <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">Services</a></li>
-                    <li><a href="projects.html" class="text-gray-400 hover:text-brand_blue transition">Projects</a></li>
-                    <li><a href="clients.html" class="text-gray-400 hover:text-brand_blue transition">Clients</a></li>
-                </ul>
-            </div>
-
-            <!-- CORE SERVICES -->
-            <div>
-                <h5 class="text-lg font-bold text-white mb-4">Core Services</h5>
-                <ul class="space-y-3">
-                    <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">
-                        Light, Heavy & Specialized Transport
-                    </a></li>
-                    <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">
-                        Shipping & Air Cargo
-                    </a></li>
-                    <li><a href="services.html" class="text-gray-400 hover:text-brand_blue transition">
-                        Warehouse Services
-                    </a></li>
-                    <li><a href="contact.html" class="text-gray-400 hover:text-brand_blue transition">
-                        Get a Quote
-                    </a></li>
-                </ul>
-            </div>
-
-            <!-- CONTACT -->
-            <div>
-                <h5 class="text-lg font-bold text-white mb-4">Get In Touch</h5>
-
-                <p class="text-gray-300 font-semibold mb-2">UAE Headquarters</p>
-                <p class="text-gray-400 mb-4">Dubai, United Arab Emirates</p>
-
-                <p class="text-gray-300 font-semibold mb-1">Email:</p>
-                <a href="mailto:info@onshade.com"
-                   class="text-brand_blue hover:text-white transition block">
-                    info@onshade.com
-                </a>
-                <a href="mailto:sales@onshade.com"
-                   class="text-brand_blue hover:text-white transition block">
-                    sales@onshade.com
-                </a>
-
-                <p class="text-gray-300 font-semibold mt-4 mb-1">Phone:</p>
-                <a href="tel:+971521222497"
-                   class="text-brand_blue hover:text-white transition block">
-                    +971 52 122 2497
-                </a>
-                <a href="tel:+971521222496"
-                   class="text-brand_blue hover:text-white transition block">
-                    +971 52 122 2496
-                </a>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs">
+                &copy; 2025 On Shade Transportation LLC. All rights reserved.
+                <p>Serving Abu Dhabi, Dubai & across the UAE</p>
             </div>
         </div>
+    </footer>
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
 
-        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs">
-            &copy; 2025 On Shade Transportation LLC. All rights reserved.
-            <p>Serving Abu Dhabi, Dubai & across the UAE</p>
-        </div>
-    </div>
-</footer>
+        // 1. Move the cursor
+        window.addEventListener('mousemove', function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot moves instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline uses animation for smoothness
+            // We use 'animate' for better performance than changing style directly
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // 2. Add Hover Effect for Buttons and Links
+        const clickableElements = document.querySelectorAll('a, button, input[type="submit"], select, textarea, input');
+
+        clickableElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener("load", () => {
+            const hero = document.querySelector(".hero-bg");
+            if (hero) {
+                hero.classList.add("loaded");
+            }
+        });
+    </script>
 
 
 </body>
